@@ -20,7 +20,14 @@ public enum ErrorCode {
     BR("Bad request", HttpStatus.BAD_REQUEST, ExitCode.KO),
     RNF("The URL you have reached is not in service at this time", HttpStatus.SERVICE_UNAVAILABLE, ExitCode.KO),
     EBC("Bad Credentials", HttpStatus.BAD_REQUEST, ExitCode.KO),
-    EUN("User not found", HttpStatus.BAD_REQUEST, ExitCode.KO);
+    EUN("User not found", HttpStatus.BAD_REQUEST, ExitCode.KO),
+
+
+    //CONCERT
+    CNF("Concert not found", HttpStatus.NOT_FOUND, ExitCode.KO),
+    CSO("Concert sold out", HttpStatus.BAD_REQUEST, ExitCode.KO),
+    ICD("Invalid Concert date", HttpStatus.BAD_REQUEST, ExitCode.KO);
+
 
     private String message;
     private HttpStatus status;
