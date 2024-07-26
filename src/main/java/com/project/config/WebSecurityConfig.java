@@ -2,7 +2,6 @@ package com.project.config;
 
 import com.project.filters.JwtAuthFilter;
 import com.project.model.enums.ErrorCode;
-import com.project.model.enums.RoleCode;
 import com.project.response.ErrorResponse;
 import com.project.utils.ApiUtils;
 import com.project.utils.SessionInterceptor;
@@ -50,7 +49,6 @@ public class WebSecurityConfig implements WebMvcConfigurer {
 
         http.authorizeHttpRequests(request ->
                 request.requestMatchers(ApiUtils.PERMIT_ALL).permitAll()
-                       .requestMatchers(ApiUtils.PERMIT_ALL).hasAnyAuthority(RoleCode.ROLE_USER.name())
                         .anyRequest().authenticated()
         );
         http.exceptionHandling(
