@@ -1,5 +1,6 @@
 package com.project.config;
 
+import com.project.exception.ProductException;
 import com.project.exception.UserException;
 import com.project.model.enums.ErrorCode;
 import com.project.response.ErrorResponse;
@@ -32,11 +33,20 @@ public class ExceptionHandlerConfig {
 
     private static final Logger log = LoggerFactory.getLogger(ExceptionHandlerConfig.class);
 
+    //Manage exceptions for user operations
     @ExceptionHandler({UserException.class, InternalAuthenticationServiceException.class})
     public ResponseEntity<ErrorResponse> handleUserException(UserException e) {
         logStacktrace(e.getResponse(), e);
         return new ResponseEntity<>(e.getResponse(), e.getResponse().getStatus());
     }
+
+    //Manage exceptions for Product operations
+    @ExceptionHandler({ProductException.class, InternalAuthenticationServiceException.class})
+    public ResponseEntity<ErrorResponse> handleProductException(ProductException e) {
+        logStacktrace(e.getResponse(), e);
+        return new ResponseEntity<>(e.getResponse(), e.getResponse().getStatus());
+    }
+
 
     @ExceptionHandler(NoHandlerFoundException.class)
     public ResponseEntity<ErrorResponse> noHandlerFoundException(NoHandlerFoundException e) {
