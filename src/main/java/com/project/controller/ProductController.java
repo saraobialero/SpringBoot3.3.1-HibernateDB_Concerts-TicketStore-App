@@ -20,13 +20,13 @@ public class ProductController {
 
     @GetMapping("/")
     public ResponseEntity<SuccessResponse<List<ProductDTO>>> getConcerts(HttpServletRequest request){
-        return new ResponseEntity<>(new SuccessResponse<>(productService.viewAvailableConcertsFromNow()), HttpStatus.OK);
+        return new ResponseEntity<>(new SuccessResponse<>(productService.viewAvailableProductsFromNow()), HttpStatus.OK);
     }
 
     @GetMapping("/detail/{idConcert}")
     public ResponseEntity<SuccessResponse<ProductDTO>> getConcertDetail(@PathVariable Integer idConcert,
                                                                         HttpServletRequest request) {
-        ProductDTO productDTO = productService.getConcert(idConcert);
+        ProductDTO productDTO = productService.getProducts(idConcert);
         return new ResponseEntity<>(new SuccessResponse<>(productDTO), HttpStatus.OK);
     }
 
@@ -34,7 +34,7 @@ public class ProductController {
     public ResponseEntity<SuccessResponse<Boolean>> updatePlace(@PathVariable Integer idConcert,
                                                                 @PathVariable int qta,
                                                                 HttpServletRequest request) {
-        boolean updatedSuccessfully = productService.updateAvailablePlaceAfterPrenotation(idConcert, qta);
+        boolean updatedSuccessfully = productService.updateAvailablePlaceAfterOrders(idConcert, qta);
         return updatedSuccessfully
                ? new ResponseEntity<>(new SuccessResponse<>(updatedSuccessfully), HttpStatus.OK)
                : new ResponseEntity<>(new SuccessResponse<>(updatedSuccessfully), HttpStatus.BAD_REQUEST);

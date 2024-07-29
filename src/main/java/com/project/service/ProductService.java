@@ -16,12 +16,13 @@ import java.util.stream.Collectors;
 
 @Service
 public class ProductService implements ProductFunctions {
+    private ProductService productService;
 
     @Autowired
     private ProductRepository productRepository;
 
     @Override
-    public List<ProductDTO> viewAvailableConcertsFromNow() {
+    public List<ProductDTO> viewAvailableProductsFromNow() {
         List<Product> entities = productRepository.findAllFromNow();
         return entities.stream()
                 .map(this::convertToProductDTO)
@@ -29,22 +30,22 @@ public class ProductService implements ProductFunctions {
     }
 
     @Override
-    public ProductDTO getConcert(Integer idConcert) {
-        Product product = productRepository.findById(idConcert)
+    public ProductDTO getProducts(Integer idProduct) {
+        Product product = productRepository.findById(idProduct)
                 .orElseThrow(()-> new ProductException(
-                new ErrorResponse(ErrorCode.CNF, "Concert not found with id: " + idConcert)));
+                new ErrorResponse(ErrorCode.CNF, "Concert not found with id: " + idProduct)));
         return convertToProductDTO(product);
     }
 
     @Override
-    public boolean updateAvailablePlaceAfterPrenotation(Integer idConcert, int qta) {
-        Product product = productRepository.findById(idConcert)
+    public boolean updateAvailablePlaceAfterOrders(Integer idProduct, int qta) {
+        Product product = productRepository.findById(idProduct)
                 .orElseThrow(()-> new ProductException(
-                                  new ErrorResponse(ErrorCode.CNF, "Concert not found with id: " + idConcert)));
+                                  new ErrorResponse(ErrorCode.CNF, "Concert not found with id: " + idProduct)));
 
         if(product.getAvailablePlace() < qta) {
             throw new ProductException(
-                  new ErrorResponse(ErrorCode.CSO, "Concert Sold out with id: " + idConcert));
+                  new ErrorResponse(ErrorCode.CSO, "Concert Sold out with id: " + idProduct));
         }
 
         product.setAvailablePlace(product.getAvailablePlace() - qta);

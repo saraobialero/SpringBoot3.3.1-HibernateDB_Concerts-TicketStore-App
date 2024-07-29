@@ -5,7 +5,7 @@ import com.project.model.dto.ProductDTO;
 import java.util.List;
 
 public interface ProductFunctions {
-    List<ProductDTO> viewAvailableConcertsFromNow();
-    ProductDTO getConcert(Integer idConcert);
-    boolean updateAvailablePlaceAfterPrenotation(Integer idConcert, int qta);
+    List<ProductDTO> viewAvailableProductsFromNow();
+    ProductDTO getProducts(Integer idProduct);
+    boolean updateAvailablePlaceAfterOrders(Integer idProduct, int qta);
 }
