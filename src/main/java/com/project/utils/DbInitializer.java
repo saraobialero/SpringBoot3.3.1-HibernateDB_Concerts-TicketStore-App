@@ -1,8 +1,8 @@
 package com.project.utils;
 
-import com.project.model.Concert;
+import com.project.model.Product;
 import com.project.model.User;
-import com.project.repository.ConcertRepository;
+import com.project.repository.ProductRepository;
 import com.project.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -23,11 +23,10 @@ public class DbInitializer implements CommandLineRunner {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    private ConcertRepository concertRepository;
+    private ProductRepository productRepository;
 
     @Override
     public void run(String... args) throws Exception {
-
         initializeConcerts();
         initializeRolesAndUsers();
     }
@@ -44,9 +43,9 @@ public class DbInitializer implements CommandLineRunner {
     }
 
     private void initializeConcerts() {
-        if (concertRepository.count() == 0) {
-            concertRepository.saveAll(List.of(
-                    Concert.builder()
+        if (productRepository.count() == 0) {
+            productRepository.saveAll(List.of(
+                    Product.builder()
                             .city("New York")
                             .band("The Rolling Stones")
                             .reply("Madison Square Garden")
@@ -54,7 +53,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 8, 15))
                             .price(new BigDecimal("150.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("Los Angeles")
                             .band("Coldplay")
                             .reply("SoFi Stadium")
@@ -62,7 +61,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 9, 20))
                             .price(new BigDecimal("120.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("Chicago")
                             .band("Imagine Dragons")
                             .reply("United Center")
@@ -70,7 +69,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 7, 25))
                             .price(new BigDecimal("110.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("Houston")
                             .band("Metallica")
                             .reply("Toyota Center")
@@ -78,7 +77,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 10, 5))
                             .price(new BigDecimal("140.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("Phoenix")
                             .band("U2")
                             .reply("State Farm Stadium")
@@ -86,7 +85,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 11, 15))
                             .price(new BigDecimal("160.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("Philadelphia")
                             .band("Maroon 5")
                             .reply("Wells Fargo Center")
@@ -94,7 +93,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 10, 18))
                             .price(new BigDecimal("125.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("San Antonio")
                             .band("Linkin Park")
                             .reply("AT&T Center")
@@ -102,7 +101,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 12, 2))
                             .price(new BigDecimal("135.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("San Diego")
                             .band("The Beatles Tribute")
                             .reply("Pechanga Arena")
@@ -110,7 +109,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 8, 21))
                             .price(new BigDecimal("100.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("Dallas")
                             .band("Queen")
                             .reply("American Airlines Center")
@@ -118,7 +117,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 8, 17))
                             .price(new BigDecimal("150.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("San Jose")
                             .band("The Who")
                             .reply("SAP Center")
@@ -126,7 +125,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 8, 25))
                             .price(new BigDecimal("130.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("Austin")
                             .band("Red Hot Chili Peppers")
                             .reply("Frank Erwin Center")
@@ -134,7 +133,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 7, 14))
                             .price(new BigDecimal("140.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("Jacksonville")
                             .band("Foo Fighters")
                             .reply("VyStar Veterans Memorial Arena")
@@ -142,7 +141,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 10, 29))
                             .price(new BigDecimal("120.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("Columbus")
                             .band("Guns N' Roses")
                             .reply("Nationwide Arena")
@@ -150,7 +149,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 12, 9))
                             .price(new BigDecimal("135.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("Charlotte")
                             .band("Bon Jovi")
                             .reply("Spectrum Center")
@@ -158,7 +157,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 12, 23))
                             .price(new BigDecimal("125.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("Fort Worth")
                             .band("Aerosmith")
                             .reply("Dickies Arena")
@@ -166,7 +165,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 7, 10))
                             .price(new BigDecimal("145.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("Indianapolis")
                             .band("The Eagles")
                             .reply("Gainbridge Fieldhouse")
@@ -174,7 +173,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 8, 2))
                             .price(new BigDecimal("135.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("Seattle")
                             .band("Pearl Jam")
                             .reply("Climate Pledge Arena")
@@ -182,7 +181,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 9, 13))
                             .price(new BigDecimal("140.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("Denver")
                             .band("Fleetwood Mac")
                             .reply("Ball Arena")
@@ -190,7 +189,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 10, 20))
                             .price(new BigDecimal("150.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("Washington")
                             .band("Journey")
                             .reply("Capital One Arena")
@@ -198,7 +197,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 11, 18))
                             .price(new BigDecimal("130.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("Boston")
                             .band("The Beach Boys")
                             .reply("TD Garden")
@@ -206,7 +205,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 12, 5))
                             .price(new BigDecimal("115.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("Nashville")
                             .band("Nirvana Tribute")
                             .reply("Bridgestone Arena")
@@ -214,7 +213,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 10, 12))
                             .price(new BigDecimal("110.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("Las Vegas")
                             .band("Elton John")
                             .reply("T-Mobile Arena")
@@ -222,7 +221,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 12, 28))
                             .price(new BigDecimal("180.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("Portland")
                             .band("Green Day")
                             .reply("Moda Center")
@@ -230,7 +229,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 12, 17))
                             .price(new BigDecimal("115.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("Oklahoma City")
                             .band("Twenty One Pilots")
                             .reply("Paycom Center")
@@ -238,7 +237,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 11, 22))
                             .price(new BigDecimal("105.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("Tucson")
                             .band("The Killers")
                             .reply("Tucson Arena")
@@ -246,7 +245,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 11, 30))
                             .price(new BigDecimal("110.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("Fresno")
                             .band("Panic! At The Disco")
                             .reply("Save Mart Center")
@@ -254,7 +253,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 9, 8))
                             .price(new BigDecimal("100.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("Sacramento")
                             .band("Muse")
                             .reply("Golden 1 Center")
@@ -262,7 +261,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 7, 14))
                             .price(new BigDecimal("130.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("Long Beach")
                             .band("Blink-182")
                             .reply("Long Beach Arena")
@@ -270,7 +269,7 @@ public class DbInitializer implements CommandLineRunner {
                             .date(LocalDate.of(2024, 8, 19))
                             .price(new BigDecimal("95.00"))
                             .build(),
-                    Concert.builder()
+                    Product.builder()
                             .city("Kansas City")
                             .band("Weezer")
                             .reply("T-Mobile Center")

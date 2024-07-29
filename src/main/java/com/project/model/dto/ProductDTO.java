@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ConcertDTO {
+public class ProductDTO {
 
     private Integer id;
     private String city;

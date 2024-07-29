@@ -15,8 +15,8 @@ import java.time.LocalDate;
 @Data
 @Builder
 @Entity
-@Table(name = "concerts")
-public class Concert implements Serializable {
+@Table(name = "products")
+public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,6 +40,10 @@ public class Concert implements Serializable {
 
     @Column (name = "price")
     private BigDecimal price;
+
+    //One to one relationship: one product has one ticket
+    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Ticket ticket;
 
 
 }

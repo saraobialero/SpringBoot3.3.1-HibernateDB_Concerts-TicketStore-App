@@ -1,6 +1,5 @@
 package com.project.utils;
 
-
 import com.project.config.JwtConfig;
 import com.project.model.User;
 import io.jsonwebtoken.Claims;
@@ -23,7 +22,6 @@ public class JwtUtils {
     @Autowired
     private JwtConfig jwtConfig;
 
-
     public String extractEmail(String token) {
         return extractClaim(token, Claims::getSubject);
     }
@@ -42,9 +40,6 @@ public class JwtUtils {
         return buildToken(extraClaims, user, jwtConfig.getJwtExpiredAccessToken());
     }
 
-    public String generateToken(Map<String, Object> extraClaims, User user, Integer expirationTime) {
-        return buildToken(extraClaims, user, expirationTime);
-    }
 
     public String generateRefreshToken(User user) {
         return buildToken(new HashMap<>(), user, jwtConfig.getJwtExpiredRefreshToken());

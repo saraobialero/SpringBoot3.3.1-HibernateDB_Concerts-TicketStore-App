@@ -40,6 +40,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         final String authHeader = request.getHeader("Authorization");
         final String jwt;
         final String username;
+
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             if (Arrays.stream(ApiUtils.PERMIT_ALL).anyMatch(value -> request.getServletPath().startsWith(value.replace("/**", "")))) {
                 filterChain.doFilter(request, response);

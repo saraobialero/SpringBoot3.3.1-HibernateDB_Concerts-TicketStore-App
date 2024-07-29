@@ -22,12 +22,10 @@ public enum ErrorCode {
     EBC("Bad Credentials", HttpStatus.BAD_REQUEST, ExitCode.KO),
     EUN("User not found", HttpStatus.BAD_REQUEST, ExitCode.KO),
 
-
     //CONCERT
     CNF("Concert not found", HttpStatus.NOT_FOUND, ExitCode.KO),
     CSO("Concert sold out", HttpStatus.BAD_REQUEST, ExitCode.KO),
     ICD("Invalid Concert date", HttpStatus.BAD_REQUEST, ExitCode.KO);
-
 
     private String message;
     private HttpStatus status;
