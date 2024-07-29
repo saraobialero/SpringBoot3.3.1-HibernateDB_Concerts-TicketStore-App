@@ -1,6 +1,6 @@
 package com.project.service;
 
-import com.project.exception.ConcertException;
+import com.project.exception.ProductException;
 import com.project.model.Product;
 import com.project.model.dto.ProductDTO;
 import com.project.model.enums.ErrorCode;
@@ -31,7 +31,7 @@ public class ProductService implements ProductFunctions {
     @Override
     public ProductDTO getConcert(Integer idConcert) {
         Product product = productRepository.findById(idConcert)
-                .orElseThrow(()-> new ConcertException(
+                .orElseThrow(()-> new ProductException(
                 new ErrorResponse(ErrorCode.CNF, "Concert not found with id: " + idConcert)));
         return convertToProductDTO(product);
     }
@@ -39,11 +39,11 @@ public class ProductService implements ProductFunctions {
     @Override
     public boolean updateAvailablePlaceAfterPrenotation(Integer idConcert, int qta) {
         Product product = productRepository.findById(idConcert)
-                .orElseThrow(()-> new ConcertException(
+                .orElseThrow(()-> new ProductException(
                                   new ErrorResponse(ErrorCode.CNF, "Concert not found with id: " + idConcert)));
 
         if(product.getAvailablePlace() < qta) {
-            throw new ConcertException(
+            throw new ProductException(
                   new ErrorResponse(ErrorCode.CSO, "Concert Sold out with id: " + idConcert));
         }
 

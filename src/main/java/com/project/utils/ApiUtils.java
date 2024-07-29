@@ -2,7 +2,7 @@ package com.project.utils;
 
 public class ApiUtils {
 
-    public static String[] PERMIT_ALL = {"/swagger/**",
+    public final static String[] PERMIT_ALL = {"/swagger/**",
                 "/swagger-resources/**",
                 "/swagger-resources/configuration/ui/**",
                 "/swagger-resources/configuration/security/**",

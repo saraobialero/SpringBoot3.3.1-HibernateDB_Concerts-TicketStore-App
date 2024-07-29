@@ -8,7 +8,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Setter
 @Getter
-public class ConcertException extends RuntimeException {
+public class ProductException extends RuntimeException {
     private ErrorResponse response;
 
     @Override

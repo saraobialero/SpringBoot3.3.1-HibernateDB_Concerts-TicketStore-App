@@ -6,7 +6,6 @@ import com.project.model.dto.UserDTO;
 import com.project.model.enums.ErrorCode;
 import com.project.repository.UserRepository;
 import com.project.response.ErrorResponse;
-import com.project.utils.JwtUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -15,7 +14,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
@@ -23,7 +21,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     private UserRepository userRepository;
 
     @Autowired
-    private JwtUtils jwtUtils;
+    private JwtService jwtService;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -49,12 +47,12 @@ public class CustomUserDetailsService implements UserDetailsService {
         }
 
         String token = authHeader.substring(7);
-        String email = jwtUtils.extractEmail(token);
-        //OTTIREN USER DA TOEKN
+        String email = jwtService.extractEmail(token);
+        //Get user from token
         UserDetails userDetails = this.loadUserByUsername(email);
 
-        //VERIFICARE CHE ACCES TOKEN E USER DETAIL CORRISPONDANO
-        if(!jwtUtils.isTokenValid(token, userDetails)) {
+        //verify token and user
+        if(!jwtService.isTokenValid(token, userDetails)) {
             throw new UserException(new ErrorResponse(ErrorCode.BR, "Token is not valid or expired"));
         }
         return this.userRepository.findByEmail(email)

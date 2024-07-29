@@ -5,8 +5,8 @@ import com.project.config.SecurityExceptionHandlerConfig;
 import com.project.model.enums.ErrorCode;
 import com.project.response.ErrorResponse;
 import com.project.service.CustomUserDetailsService;
+import com.project.service.JwtService;
 import com.project.utils.ApiUtils;
-import com.project.utils.JwtUtils;
 import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -26,8 +26,9 @@ import java.util.Arrays;
 
 @Component
 public class JwtAuthFilter extends OncePerRequestFilter {
+
     @Autowired
-    private JwtUtils jwtUtils;
+    private JwtService jwtService;
 
     @Autowired
     private SecurityExceptionHandlerConfig securityExceptionHandlerConfig;
@@ -51,7 +52,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         }
         jwt = authHeader.substring(7);
         try {
-            username = jwtUtils.extractEmail(jwt);
+            username = jwtService.extractEmail(jwt);
         } catch (ExpiredJwtException e) {
             securityExceptionHandlerConfig.handle(response, new ErrorResponse(ErrorCode.EXT));
             return;
@@ -59,11 +60,11 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = customUserDetailsService.loadUserByUsername(username);
 
-            if (jwtUtils.isTokenValid(jwt, userDetails)) {
+            if (jwtService.isTokenValid(jwt, userDetails)) {
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authToken);
-                request.setAttribute("id", jwtUtils.getIdFromJwtToken(jwt));
+                request.setAttribute("id", jwtService.getIdFromJwtToken(jwt));
             }
 
         }

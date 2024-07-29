@@ -7,7 +7,6 @@ import com.project.model.dto.AuthenticationResponse;
 import com.project.model.enums.ErrorCode;
 import com.project.repository.UserRepository;
 import com.project.response.ErrorResponse;
-import com.project.utils.JwtUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +30,7 @@ public class AuthenticationService {
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private JwtUtils jwtUtils;
+    private JwtService jwtService;
 
     @Autowired
     private UserDetailsService userDetailsService;
@@ -39,22 +38,26 @@ public class AuthenticationService {
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
 
-    public AuthenticationResponse authentication(AuthRequest request) {
+    public AuthenticationResponse authenticate(AuthRequest request) {
+        //Verify user credentials and return authentication token
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
         );
         User user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new AuthException(new ErrorResponse(ErrorCode.EUN, "user with email not found")));
-        return AuthenticationResponse.builder()
-                .accessToken(jwtUtils.generateToken(user))
-                .refreshToken(jwtUtils.generateRefreshToken(user))
-                .build();
+                .orElseThrow(() -> new AuthException
+                                   (new ErrorResponse(ErrorCode.EUN, "User not found")));
+        return createAuthenticationResponse(user);
     }
-
+    //Refresh the access token
     public AuthenticationResponse refreshToken(HttpServletRequest request) {
         User user = customUserDetailsService.getUserFromToken(request);
-        return AuthenticationResponse.builder().accessToken(jwtUtils.generateToken(user))
-                                               .refreshToken(jwtUtils.generateRefreshToken(user))
-                                               .build();
+        return createAuthenticationResponse(user);
+    }
+    //Build the authentication response with access and refresh tokens
+    private AuthenticationResponse createAuthenticationResponse(User user) {
+        return AuthenticationResponse.builder()
+                .accessToken(jwtService.generateToken(user))
+                .refreshToken(jwtService.generateRefreshToken(user))
+                .build();
     }
 }

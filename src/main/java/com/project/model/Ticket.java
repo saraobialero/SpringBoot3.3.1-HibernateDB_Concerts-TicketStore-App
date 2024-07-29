@@ -29,7 +29,7 @@ public class Ticket implements Serializable {
 
     //One-to_many relationship with prenotation: one ticket for more prenotation
     @OneToMany(mappedBy = "ticket", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Prenotation> prenotations;
+    private List<Order> orders;
 
     @Column(name = "available_qta")
     private int availableQta;

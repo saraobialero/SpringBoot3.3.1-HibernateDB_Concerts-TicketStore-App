@@ -14,8 +14,8 @@ import java.math.BigDecimal;
 @Data
 @Builder
 @Entity
-@Table(name = "prenotations")
-public class Prenotation {
+@Table(name = "orders")
+public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,10 +34,10 @@ public class Prenotation {
     @Enumerated(EnumType.STRING)
     private PaymentType paymentType;
 
-
     @Column(name = "total_price")
     private BigDecimal totalPrice;
 
+    // Many-to-one relationship with Ticket entity: many orders for single ticket (Carnet)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_ticket")
     private Ticket ticket;
