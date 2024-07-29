@@ -1,6 +1,8 @@
 package com.project.config;
 
+import com.project.exception.OrderException;
 import com.project.exception.ProductException;
+import com.project.exception.TicketException;
 import com.project.exception.UserException;
 import com.project.model.enums.ErrorCode;
 import com.project.response.ErrorResponse;
@@ -41,8 +43,22 @@ public class ExceptionHandlerConfig {
     }
 
     //Manage exceptions for Product operations
-    @ExceptionHandler({ProductException.class, InternalAuthenticationServiceException.class})
+    @ExceptionHandler(ProductException.class)
     public ResponseEntity<ErrorResponse> handleProductException(ProductException e) {
+        logStacktrace(e.getResponse(), e);
+        return new ResponseEntity<>(e.getResponse(), e.getResponse().getStatus());
+    }
+
+    //Manage exceptions for Order operations
+    @ExceptionHandler(OrderException.class)
+    public ResponseEntity<ErrorResponse> handleOrderException(OrderException e) {
+        logStacktrace(e.getResponse(), e);
+        return new ResponseEntity<>(e.getResponse(), e.getResponse().getStatus());
+    }
+
+    //Manage exceptions for Ticket operations
+    @ExceptionHandler(TicketException.class)
+    public ResponseEntity<ErrorResponse> handleTicketException(TicketException e) {
         logStacktrace(e.getResponse(), e);
         return new ResponseEntity<>(e.getResponse(), e.getResponse().getStatus());
     }

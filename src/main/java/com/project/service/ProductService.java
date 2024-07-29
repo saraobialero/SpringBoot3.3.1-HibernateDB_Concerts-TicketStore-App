@@ -16,10 +16,13 @@ import java.util.stream.Collectors;
 
 @Service
 public class ProductService implements ProductFunctions {
-    private ProductService productService;
 
-    @Autowired
-    private ProductRepository productRepository;
+  //Constructor injection
+  private final ProductRepository productRepository;
+  @Autowired
+  public ProductService(ProductRepository productRepository) {
+      this.productRepository = productRepository;
+  }
 
     @Override
     public List<ProductDTO> viewAvailableProductsFromNow() {
@@ -37,30 +40,12 @@ public class ProductService implements ProductFunctions {
         return convertToProductDTO(product);
     }
 
-    @Override
-    public boolean updateAvailablePlaceAfterOrders(Integer idProduct, int qta) {
-        Product product = productRepository.findById(idProduct)
-                .orElseThrow(()-> new ProductException(
-                                  new ErrorResponse(ErrorCode.CNF, "Concert not found with id: " + idProduct)));
-
-        if(product.getAvailablePlace() < qta) {
-            throw new ProductException(
-                  new ErrorResponse(ErrorCode.CSO, "Concert Sold out with id: " + idProduct));
-        }
-
-        product.setAvailablePlace(product.getAvailablePlace() - qta);
-        productRepository.save(product);
-
-        return true;
-    }
-
-    public ProductDTO convertToProductDTO(Product product) {
+    // Convert entity to DTO
+    private ProductDTO convertToProductDTO(Product product) {
         return ProductDTO.builder()
                 .id(product.getId())
-                .city(product.getCity())
-                .band(product.getBand())
-                .reply(product.getReply())
-                .place(product.getAvailablePlace())
+                .name(product.getName())
+                .description(product.getDescription())
                 .date(product.getDate())
                 .price(new BigDecimal(String.valueOf(product.getPrice())))
                 .build();

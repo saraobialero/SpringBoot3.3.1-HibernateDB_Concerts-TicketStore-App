@@ -12,32 +12,23 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/concerts")
+@RequestMapping("/api/products")
 public class ProductController {
 
     @Autowired
     private ProductService productService;
 
     @GetMapping("/")
-    public ResponseEntity<SuccessResponse<List<ProductDTO>>> getConcerts(HttpServletRequest request){
+    public ResponseEntity<SuccessResponse<List<ProductDTO>>> getProducts(HttpServletRequest request){
         return new ResponseEntity<>(new SuccessResponse<>(productService.viewAvailableProductsFromNow()), HttpStatus.OK);
     }
 
-    @GetMapping("/detail/{idConcert}")
-    public ResponseEntity<SuccessResponse<ProductDTO>> getConcertDetail(@PathVariable Integer idConcert,
-                                                                        HttpServletRequest request) {
-        ProductDTO productDTO = productService.getProducts(idConcert);
+    @GetMapping("/detail/{idProduct}")
+    public ResponseEntity<SuccessResponse<ProductDTO>> getProductDetails(@PathVariable Integer idProduct,
+                                                                         HttpServletRequest request) {
+        ProductDTO productDTO = productService.getProducts(idProduct);
         return new ResponseEntity<>(new SuccessResponse<>(productDTO), HttpStatus.OK);
     }
 
-    @PatchMapping("/detail/place/{idConcert}/{qta}")
-    public ResponseEntity<SuccessResponse<Boolean>> updatePlace(@PathVariable Integer idConcert,
-                                                                @PathVariable int qta,
-                                                                HttpServletRequest request) {
-        boolean updatedSuccessfully = productService.updateAvailablePlaceAfterOrders(idConcert, qta);
-        return updatedSuccessfully
-               ? new ResponseEntity<>(new SuccessResponse<>(updatedSuccessfully), HttpStatus.OK)
-               : new ResponseEntity<>(new SuccessResponse<>(updatedSuccessfully), HttpStatus.BAD_REQUEST);
-    }
 
 }

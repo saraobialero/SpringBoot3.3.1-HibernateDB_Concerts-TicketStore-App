@@ -23,17 +23,11 @@ public class Product implements Serializable {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "city")
-    private String city;
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "band")
-    private String band;
-
-    @Column(name = "reply")
-    private String reply;
-
-    @Column(name = "available_place")
-    private int availablePlace;
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "date")
     private LocalDate date;
@@ -41,7 +35,7 @@ public class Product implements Serializable {
     @Column (name = "price")
     private BigDecimal price;
 
-    //One to one relationship: one product has one ticket
+    //One-to-one relationship: one product has one ticket
     @OneToOne(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Ticket ticket;
 

@@ -7,5 +7,4 @@ import java.util.List;
 public interface ProductFunctions {
     List<ProductDTO> viewAvailableProductsFromNow();
     ProductDTO getProducts(Integer idProduct);
-    boolean updateAvailablePlaceAfterOrders(Integer idProduct, int qta);
 }

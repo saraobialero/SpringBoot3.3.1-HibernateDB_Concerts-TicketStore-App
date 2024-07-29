@@ -23,9 +23,8 @@ public class Ticket implements Serializable {
     private Integer id;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_concert")
+    @JoinColumn(name = "id_product")
     private Product product;
-
 
     //One-to_many relationship with prenotation: one ticket for more prenotation
     @OneToMany(mappedBy = "ticket", cascade = CascadeType.ALL, orphanRemoval = true)

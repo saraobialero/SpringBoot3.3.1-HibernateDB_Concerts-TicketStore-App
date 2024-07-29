@@ -17,13 +17,11 @@ import java.time.LocalDate;
 public class ProductDTO {
 
     private Integer id;
-    private String city;
-    private String band;
-    private String reply;
-    private int place;
+    private String name;
+    private String description;
     private LocalDate date;
-
     @JsonProperty("price")
     @JsonFormat(shape = JsonFormat.Shape.STRING)
     private BigDecimal price;
+    //idTicket connected
 }

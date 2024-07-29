@@ -13,4 +13,6 @@ import lombok.NoArgsConstructor;
 public class TicketDTO {
 
     private Integer id;
+    private int availableQta;
+    //idProduct connected
 }
