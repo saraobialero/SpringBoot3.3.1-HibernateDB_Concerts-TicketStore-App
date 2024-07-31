@@ -21,8 +21,11 @@ public enum ErrorCode {
     RNF("The URL you have reached is not in service at this time", HttpStatus.SERVICE_UNAVAILABLE, ExitCode.KO),
     EBC("Bad Credentials", HttpStatus.BAD_REQUEST, ExitCode.KO),
     EUN("User not found", HttpStatus.BAD_REQUEST, ExitCode.KO),
+    EAE("Email already exists", HttpStatus.BAD_REQUEST, ExitCode.KO),
+    PWM("Passwords do not match", HttpStatus.BAD_REQUEST, ExitCode.KO),
 
-    //CONCERT
+
+    //PRODUCT
     CNF("Concert not found", HttpStatus.NOT_FOUND, ExitCode.KO),
     CSO("Concert sold out", HttpStatus.BAD_REQUEST, ExitCode.KO),
     ICD("Invalid Concert date", HttpStatus.BAD_REQUEST, ExitCode.KO);
