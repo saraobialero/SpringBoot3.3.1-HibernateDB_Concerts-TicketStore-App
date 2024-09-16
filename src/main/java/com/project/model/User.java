@@ -24,10 +24,10 @@ public class User implements UserDetails {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     private String email;
 
     @Column(name = "surname")
@@ -43,7 +43,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(); //TODO: se non voglio implementare autorizzazioni?
+        return List.of();
     }
 
     @Override

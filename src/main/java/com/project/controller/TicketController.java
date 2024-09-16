@@ -26,14 +26,13 @@ public class TicketController {
 
     @GetMapping("/")
     public ResponseEntity<SuccessResponse<List<TicketDTO>>> getTickets(HttpServletRequest request){
-        return new ResponseEntity<>(new SuccessResponse<>(ticketService.viewAvailableTicketsFromNow()), HttpStatus.OK);
+        return new ResponseEntity<>(new SuccessResponse<>(ticketService.viewAvailableTickets()), HttpStatus.OK);
     }
 
     @GetMapping("/details/{idTicket}")
     public ResponseEntity<SuccessResponse<TicketDTO>> getTicketDetails(@PathVariable Integer idTicket,
                                                                         HttpServletRequest request) {
-        TicketDTO ticketDTO = null;
-        return new ResponseEntity<>(new SuccessResponse<>(ticketDTO), HttpStatus.OK);
+        return new ResponseEntity<>(new SuccessResponse<>(ticketService.viewTicketDetails(idTicket)), HttpStatus.OK);
     }
 
 

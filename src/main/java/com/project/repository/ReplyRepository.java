@@ -1,6 +1,6 @@
 package com.project.repository;
 
-import com.project.model.Product;
+import com.project.model.Reply;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Integer> {
-    @Query("SELECT c FROM Product c WHERE (c.date > CURRENT_DATE)")
-    List<Product> findAllFromNow();
+public interface ReplyRepository extends JpaRepository<Reply, Integer> {
+    @Query("SELECT c FROM Reply c WHERE (c.replyDate > CURRENT_DATE)")
+    List<Reply> findAllFromNow();
 }

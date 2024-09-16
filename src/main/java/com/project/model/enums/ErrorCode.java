@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 @AllArgsConstructor
 public enum ErrorCode {
 
+    //User Response
     FB("Forbidden", HttpStatus.FORBIDDEN, ExitCode.KO),
     UA("Unauthorized", HttpStatus.UNAUTHORIZED, ExitCode.KO),
     INT("Invalid Token", HttpStatus.UNAUTHORIZED, ExitCode.KO),
@@ -25,10 +26,13 @@ public enum ErrorCode {
     PWM("Passwords do not match", HttpStatus.BAD_REQUEST, ExitCode.KO),
 
 
-    //PRODUCT
-    CNF("Concert not found", HttpStatus.NOT_FOUND, ExitCode.KO),
-    CSO("Concert sold out", HttpStatus.BAD_REQUEST, ExitCode.KO),
-    ICD("Invalid Concert date", HttpStatus.BAD_REQUEST, ExitCode.KO);
+    //Reply response
+    CNF("Reply of Concert not found", HttpStatus.NOT_FOUND, ExitCode.KO),
+    CSO("Reply of Concert sold out", HttpStatus.BAD_REQUEST, ExitCode.KO),
+    ICD("Invalid Reply of Concert date", HttpStatus.BAD_REQUEST, ExitCode.KO),
+
+    //Ticket response
+    TNF("Ticket not found", HttpStatus.NOT_FOUND, ExitCode.KO);
 
     private String message;
     private HttpStatus status;

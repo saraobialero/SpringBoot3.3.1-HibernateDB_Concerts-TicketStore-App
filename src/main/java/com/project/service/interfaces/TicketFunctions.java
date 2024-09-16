@@ -5,5 +5,6 @@ import com.project.model.dto.TicketDTO;
 import java.util.List;
 
 public interface TicketFunctions {
-    List<TicketDTO> viewAvailableTicketsFromNow();
+    List<TicketDTO> viewAvailableTickets();
+    TicketDTO viewTicketDetails(Integer idTicket);
 }

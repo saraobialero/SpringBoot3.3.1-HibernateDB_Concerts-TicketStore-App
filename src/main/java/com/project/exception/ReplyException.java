@@ -8,7 +8,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Setter
 @Getter
-public class ProductException extends RuntimeException {
+public class ReplyException extends RuntimeException {
     private ErrorResponse response;
 
     @Override

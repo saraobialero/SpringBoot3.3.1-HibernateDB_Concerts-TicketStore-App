@@ -162,7 +162,7 @@ Caused by: org.hibernate.query.sqm.UnknownEntityException: Could not resolve roo
 2024-07-29 12:51:18 [] [INFO ]: com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
 2024-07-29 12:51:18 [] [INFO ]: o.a.catalina.core.StandardService - Stopping service [Tomcat]
 2024-07-29 12:51:18 [] [ERROR]: o.s.boot.SpringApplication - Application run failed
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'productController': Unsatisfied dependency expressed through field 'productService': Error creating bean with name 'productService': Unsatisfied dependency expressed through field 'productRepository': Error creating bean with name 'productRepository' defined in com.project.repository.ProductRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.List com.project.repository.ProductRepository.findAllFromNow(); Reason: Validation failed for query for method public abstract java.util.List com.project.repository.ProductRepository.findAllFromNow()
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'productController': Unsatisfied dependency expressed through field 'productService': Error creating bean with name 'productService': Unsatisfied dependency expressed through field 'replyRepository': Error creating bean with name 'replyRepository' defined in com.project.repository.ReplyRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.List com.project.repository.ReplyRepository.findAllFromNow(); Reason: Validation failed for query for method public abstract java.util.List com.project.repository.ReplyRepository.findAllFromNow()
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:787)
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767)
 	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
@@ -187,7 +187,7 @@ org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'productService': Unsatisfied dependency expressed through field 'productRepository': Error creating bean with name 'productRepository' defined in com.project.repository.ProductRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.List com.project.repository.ProductRepository.findAllFromNow(); Reason: Validation failed for query for method public abstract java.util.List com.project.repository.ProductRepository.findAllFromNow()
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'productService': Unsatisfied dependency expressed through field 'replyRepository': Error creating bean with name 'replyRepository' defined in com.project.repository.ReplyRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.List com.project.repository.ReplyRepository.findAllFromNow(); Reason: Validation failed for query for method public abstract java.util.List com.project.repository.ReplyRepository.findAllFromNow()
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:787)
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767)
 	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
@@ -204,7 +204,7 @@ Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Err
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784)
 	... 23 common frames omitted
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'productRepository' defined in com.project.repository.ProductRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.List com.project.repository.ProductRepository.findAllFromNow(); Reason: Validation failed for query for method public abstract java.util.List com.project.repository.ProductRepository.findAllFromNow()
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'replyRepository' defined in com.project.repository.ReplyRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Could not create query for public abstract java.util.List com.project.repository.ReplyRepository.findAllFromNow(); Reason: Validation failed for query for method public abstract java.util.List com.project.repository.ReplyRepository.findAllFromNow()
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
@@ -217,7 +217,7 @@ Caused by: org.springframework.beans.factory.BeanCreationException: Error creati
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784)
 	... 37 common frames omitted
-Caused by: org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.util.List com.project.repository.ProductRepository.findAllFromNow(); Reason: Validation failed for query for method public abstract java.util.List com.project.repository.ProductRepository.findAllFromNow()
+Caused by: org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.util.List com.project.repository.ReplyRepository.findAllFromNow(); Reason: Validation failed for query for method public abstract java.util.List com.project.repository.ReplyRepository.findAllFromNow()
 	at org.springframework.data.repository.query.QueryCreationException.create(QueryCreationException.java:101)
 	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:115)
 	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.mapMethodsToQuery(QueryExecutorMethodInterceptor.java:99)
@@ -233,7 +233,7 @@ Caused by: org.springframework.data.repository.query.QueryCreationException: Cou
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784)
 	... 47 common frames omitted
-Caused by: java.lang.IllegalArgumentException: Validation failed for query for method public abstract java.util.List com.project.repository.ProductRepository.findAllFromNow()
+Caused by: java.lang.IllegalArgumentException: Validation failed for query for method public abstract java.util.List com.project.repository.ReplyRepository.findAllFromNow()
 	at org.springframework.data.jpa.repository.query.SimpleJpaQuery.validateQuery(SimpleJpaQuery.java:100)
 	at org.springframework.data.jpa.repository.query.SimpleJpaQuery.<init>(SimpleJpaQuery.java:70)
 	at org.springframework.data.jpa.repository.query.JpaQueryFactory.fromMethodWithQueryString(JpaQueryFactory.java:60)
@@ -1571,7 +1571,7 @@ Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'jw
 2024-07-29 18:48:14 [] [INFO ]: com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
 2024-07-29 18:48:14 [] [INFO ]: o.a.catalina.core.StandardService - Stopping service [Tomcat]
 2024-07-29 18:48:14 [] [ERROR]: o.s.boot.SpringApplication - Application run failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'handlerExceptionResolver' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.InternalAuthenticationServiceException]: {public org.springframework.http.ResponseEntity com.project.config.ExceptionHandlerConfig.handleUserException(com.project.exception.UserException), public org.springframework.http.ResponseEntity com.project.config.ExceptionHandlerConfig.handleProductException(com.project.exception.ProductException)}
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'handlerExceptionResolver' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.InternalAuthenticationServiceException]: {public org.springframework.http.ResponseEntity com.project.config.ExceptionHandlerConfig.handleUserException(com.project.exception.UserException), public org.springframework.http.ResponseEntity com.project.config.ExceptionHandlerConfig.handleProductException(com.project.exception.ReplyException)}
 	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:648)
 	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:636)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1337)
@@ -1595,11 +1595,11 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
-Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.InternalAuthenticationServiceException]: {public org.springframework.http.ResponseEntity com.project.config.ExceptionHandlerConfig.handleUserException(com.project.exception.UserException), public org.springframework.http.ResponseEntity com.project.config.ExceptionHandlerConfig.handleProductException(com.project.exception.ProductException)}
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.InternalAuthenticationServiceException]: {public org.springframework.http.ResponseEntity com.project.config.ExceptionHandlerConfig.handleUserException(com.project.exception.UserException), public org.springframework.http.ResponseEntity com.project.config.ExceptionHandlerConfig.handleProductException(com.project.exception.ReplyException)}
 	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:177)
 	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:644)
 	... 22 common frames omitted
-Caused by: java.lang.IllegalStateException: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.InternalAuthenticationServiceException]: {public org.springframework.http.ResponseEntity com.project.config.ExceptionHandlerConfig.handleUserException(com.project.exception.UserException), public org.springframework.http.ResponseEntity com.project.config.ExceptionHandlerConfig.handleProductException(com.project.exception.ProductException)}
+Caused by: java.lang.IllegalStateException: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.InternalAuthenticationServiceException]: {public org.springframework.http.ResponseEntity com.project.config.ExceptionHandlerConfig.handleUserException(com.project.exception.UserException), public org.springframework.http.ResponseEntity com.project.config.ExceptionHandlerConfig.handleProductException(com.project.exception.ReplyException)}
 	at org.springframework.web.method.annotation.ExceptionHandlerMethodResolver.addExceptionMapping(ExceptionHandlerMethodResolver.java:114)
 	at org.springframework.web.method.annotation.ExceptionHandlerMethodResolver.<init>(ExceptionHandlerMethodResolver.java:78)
 	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.initExceptionHandlerAdviceCache(ExceptionHandlerExceptionResolver.java:289)
@@ -1771,7 +1771,7 @@ Caused by: java.lang.IllegalStateException: Ambiguous @ExceptionHandler method m
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/web/servlet/config/annotation/DelegatingWebMvcConfiguration.class]: Ambiguous mapping. Cannot map 'ticketController' method 
 com.project.controller.TicketController#getTickets(HttpServletRequest)
 to {GET [/api/products/]}: There is already 'productController' bean method
-com.project.controller.ProductController#getProducts(HttpServletRequest) mapped.
+com.project.controller.ReplyController#getProducts(HttpServletRequest) mapped.
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
@@ -1795,7 +1795,7 @@ com.project.controller.ProductController#getProducts(HttpServletRequest) mapped.
 Caused by: java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'ticketController' method 
 com.project.controller.TicketController#getTickets(HttpServletRequest)
 to {GET [/api/products/]}: There is already 'productController' bean method
-com.project.controller.ProductController#getProducts(HttpServletRequest) mapped.
+com.project.controller.ReplyController#getProducts(HttpServletRequest) mapped.
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.validateMethodMapping(AbstractHandlerMethodMapping.java:674)
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:636)
 	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:331)

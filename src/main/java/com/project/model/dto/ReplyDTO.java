@@ -2,6 +2,7 @@ package com.project.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.project.model.Ticket;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,14 +15,9 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductDTO {
+public class ReplyDTO {
 
     private Integer id;
-    private String name;
-    private String description;
-    private LocalDate date;
-    @JsonProperty("price")
-    @JsonFormat(shape = JsonFormat.Shape.STRING)
-    private BigDecimal price;
-    //idTicket connected
+    private LocalDate replyDate;
+    private TicketDTO ticket;
 }
