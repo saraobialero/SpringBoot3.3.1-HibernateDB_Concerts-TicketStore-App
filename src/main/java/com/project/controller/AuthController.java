@@ -26,9 +26,9 @@ public class AuthController {
          return new ResponseEntity<>(new SuccessResponse<>(authService.authenticate(request)), HttpStatus.OK);
     }
 
-    @PostMapping("/sign-in")
-    public ResponseEntity<SuccessResponse<AuthenticationResponse>> signIn(@RequestBody SignInRequest request) {
-        return new ResponseEntity<>(new SuccessResponse<>(authService.signIn(request)), HttpStatus.OK);
+    @PostMapping("/signup")
+    public ResponseEntity<SuccessResponse<AuthenticationResponse>> signup(@RequestBody SignInRequest request) {
+        return new ResponseEntity<>(new SuccessResponse<>(authService.signup(request)), HttpStatus.OK);
     }
 
     @PostMapping("/refresh-token")

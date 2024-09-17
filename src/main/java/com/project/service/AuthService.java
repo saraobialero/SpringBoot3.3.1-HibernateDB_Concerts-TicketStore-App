@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
 public class AuthService {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -57,7 +57,7 @@ public class AuthService {
     }
 
     // Register a new user and return the authentication response
-    public AuthenticationResponse signIn(SignInRequest request) {
+    public AuthenticationResponse signup(SignInRequest request) {
         if(userRepository.findByEmail(request.getEmail()).isPresent()) {
             throw new AuthException(new ErrorResponse(ErrorCode.EAE, "Email already exists"));
         }
